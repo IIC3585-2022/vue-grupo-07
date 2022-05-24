@@ -36,5 +36,19 @@ export default createStore({
         state.latestRecipes.shift();
       }
     },
+    REMOVE_RECIPE(state, recipe) {
+      console.log("DELETE RECIPE ID: " + recipe.id);
+      let recipeIndex = state.allRecipes.indexOf(recipe);
+      state.allRecipes.splice(recipeIndex, 1);
+    },
+    SAVE_LATEST(state, recipe) {
+      if (!state.allRecipes.includes(recipe)) {
+        console.log("SAVING RECIPE ID: "+recipe.id);
+        state.allRecipes.push(recipe);
+      } else {
+        console.log("RECIPE ya guardada");
+      }
+      
+    }
   },
 });
