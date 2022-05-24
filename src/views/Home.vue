@@ -17,6 +17,7 @@
         <router-link :to="`/recipe/latest/${recipe.id}`">
           <button>View Recipe</button>
         </router-link>
+        <button @click="save_latest(recipe)">Save</button>
       </div>
     </div>
     <h3>Saved Recipes</h3>
@@ -31,6 +32,7 @@
         <router-link :to="`/recipe/saved/${recipe.id}`">
           <button>View Recipe</button>
         </router-link>
+        <button @click="destroy(recipe)">Delete</button>
       </div>
     </div>
 
@@ -109,6 +111,12 @@ export default {
       this.showNewRecipe = false;
       this.showIncomingRecipe = false;
     },
+    destroy(recipe) {
+      this.$store.commit("REMOVE_RECIPE", recipe);
+    },
+    save_latest(recipe) {
+      this.$store.commit("SAVE_LATEST", recipe);
+    }
   },
   components: { IncomingRecipePopup, NewRecipePopup },
 };
