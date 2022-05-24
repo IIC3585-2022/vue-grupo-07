@@ -4,26 +4,30 @@ export default createStore({
   state: {
     latestRecipes: [],
     allRecipes: [
-      // {
-      //   slug: "katsu-curry",
-      //   title: "Katsu Curry",
-      //   description:
-      //     "A delicious curry made with chicken, potatoes, and a special sauce",
-      //   ingredients: [
-      //     "1 tablespoon olive oil",
-      //     "1 onion, chopped",
-      //     "2 cloves garlic, chopped",
-      //     "1 tablespoon curry powder",
-      //   ],
-      //   method: [
-      //     "Heat oil in a large skillet over medium heat.",
-      //     "Add onion and garlic and cook, stirring often, until softened, about 5 minutes.",
-      //     "Add curry powder and cook, stirring, until fragrant, about 1 minute.",
-      //     "Add chicken and potatoes and cook, stirring, until heated through, about 5 minutes.",
-      //   ],
-      // },
+      {
+        id: "churrasco-italiano",
+        title: "Churrasco Italiano",
+        description: "Clasico churrasco italiano Chileno",
+        ingredients: [
+          "200 gramos de bistec de posta rosada",
+          "1 palta",
+          "1 Tomate",
+          "1 Pan Frica",
+          "Mayonesa",
+        ],
+        Steps: [
+          "Cortar el tomate en rebanadas de entre medio y 1 cm. Aliñar con sal por ambos lados.",
+          "Moler las paltas y agregar sal. Revolver y probar.",
+          "Tostar ligeramente el pan cortado por la mitad.",
+          "Salpimentar la carne.",
+          "En una sartén antiadherente calentar 1 cucharada de aceite a fuego medio-alto. Agregar la carne y cocinar por 1-2 minutos de manera que se dore por ambos lados.",
+          "Poner una capa delgada de mayonesa en cada mitad de pan.",
+          "Colocar  sobre el pan base: la mitad de la carne, el tomate y en la tapa la palta. Cerrar y servir con muchas servilletas.",
+        ],
+      },
     ],
   },
+
   mutations: {
     ADD_RECIPE(state, recipe) {
       state.allRecipes.push(recipe);
@@ -43,12 +47,11 @@ export default createStore({
     },
     SAVE_LATEST(state, recipe) {
       if (!state.allRecipes.includes(recipe)) {
-        console.log("SAVING RECIPE ID: "+recipe.id);
+        console.log("SAVING RECIPE ID: " + recipe.id);
         state.allRecipes.push(recipe);
       } else {
         console.log("RECIPE ya guardada");
       }
-      
-    }
+    },
   },
 });

@@ -22,7 +22,7 @@
       </div>
 
       <div class="group">
-        <label>Method</label>
+        <label>Step</label>
         <div class="method" v-for="i in newRecipe.methodRows" :key="i">
           <textarea v-model="newRecipe.steps[i - 1]"></textarea>
         </div>
