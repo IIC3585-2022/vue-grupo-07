@@ -13,7 +13,7 @@
         :key="recipe.id"
       >
         <h2>{{ recipe.name }}</h2>
-        <p>{{ recipe.description }}</p>
+        <p> <i>{{recipe.minutes}} min</i> <br> {{ recipe.description }}</p>
         <router-link :to="`/recipe/latest/${recipe.id}`">
           <button>View Recipe</button>
         </router-link>
@@ -21,6 +21,7 @@
       </div>
     </div>
     <h3>Saved Recipes</h3>
+    
     <div class="recipes">
       <div
         class="card"
@@ -28,7 +29,7 @@
         :key="recipe.id"
       >
         <h2>{{ recipe.name }}</h2>
-        <p>{{ recipe.description }}</p>
+        <p> <i>{{recipe.minutes}} min</i> <br> {{ recipe.description }}</p>
         <router-link :to="`/recipe/saved/${recipe.id}`">
           <button>View Recipe</button>
         </router-link>
@@ -36,19 +37,32 @@
       </div>
     </div>
 
+    <h3>Shop List</h3>
+    <button class="SL" @click="showPopup">Make Shop List</button>
+      
+
     <div class="add-recipe-popup" v-if="showNewRecipe">
       <NewRecipePopup @closePopup="closePopup"></NewRecipePopup>
     </div>
     <div class="add-recipe-popup" v-if="showIncomingRecipe">
       <IncomingRecipePopup :recipe="latestRecipe" @closePopup="closePopup" />
     </div>
+    
+    <div class="add-recipe-popup" v-if="showMakeShopList">
+      <shopList @closePopup="closePopup"></shopList>
+    </div>
+   
   </div>
+ 
+
+
 </template>
 
 <script>
 import recipes from "../scripts/recipes";
 import IncomingRecipePopup from "../components/IncomingRecipePopup.vue";
 import NewRecipePopup from "../components/NewRecipePopup.vue";
+import shopList from "../components/shoplist.vue";
 import { ref } from "vue";
 import { useStore } from "vuex";
 export default {
@@ -58,6 +72,7 @@ export default {
     const loading = ref(false);
     const showNewRecipe = ref(false);
     const showIncomingRecipe = ref(false);
+    const showMakeShopList = ref(false);
     const latestRecipe = ref({});
 
     if (localStorage.getItem("store")) {
@@ -75,6 +90,7 @@ export default {
       loading,
       showNewRecipe,
       showIncomingRecipe,
+      showMakeShopList,
       latestRecipe,
     };
   },
@@ -103,22 +119,25 @@ export default {
       var typeOfPopup = event.target.className;
       if (typeOfPopup == "NR") {
         this.showNewRecipe = true;
-      } else {
+      } else if(typeOfPopup == "SL"){
+        this.showMakeShopList = true;
+      }else {
         this.showIncomingRecipe = true;
       }
     },
     closePopup() {
       this.showNewRecipe = false;
       this.showIncomingRecipe = false;
+      this.showMakeShopList = false;
     },
     destroy(recipe) {
       this.$store.commit("REMOVE_RECIPE", recipe);
     },
     save_latest(recipe) {
       this.$store.commit("SAVE_LATEST", recipe);
-    }
+    },
   },
-  components: { IncomingRecipePopup, NewRecipePopup },
+  components: { IncomingRecipePopup, NewRecipePopup, shopList },
 };
 </script>
 

@@ -2,7 +2,7 @@
   <div class="recipe">
     <router-link to="/">&lt; Back</router-link>
     <h1>{{ recipe.name }}</h1>
-    <p class="desc">{{ recipe.description }}</p>
+    <p class="desc"><i>{{recipe.minutes}} min</i>  <br>{{ recipe.description }}</p>
     <hr />
     <div class="ingredients">
       <h3>Ingredients</h3>
@@ -29,14 +29,14 @@ export default {
     recipe() {
       console.log(this.$route.params);
       if (this.$route.params.status == "latest") {
-        console.log("ENTRANDOOOO");
+        //console.log("ENTRANDOOOO");
         // var found =
         // console.log(found);
         return this.$store.state.latestRecipes.find(
           (recipe) => recipe.id === this.$route.params.id
         );
       } else {
-        console.log("ENTRANDIIII");
+        //console.log("ENTRANDIIII");
         return this.$store.state.allRecipes.find(
           (recipe) => recipe.id === this.$route.params.id
         );

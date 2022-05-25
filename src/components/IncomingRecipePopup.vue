@@ -1,7 +1,8 @@
 <template>
   <div class="incoming-recipe-popup">
     <h1>{{ recipe.name }}</h1>
-    <p class="desc">{{ recipe.description }}</p>
+    
+    <p class="desc"><i>{{recipe.minutes}} min</i>  <br> {{ recipe.description }}</p>
     <hr />
     <div class="ingredients">
       <h3>Ingredients</h3>

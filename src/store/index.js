@@ -6,7 +6,8 @@ export default createStore({
     allRecipes: [
       {
         id: "churrasco-italiano",
-        title: "Churrasco Italiano",
+        name: "Churrasco Italiano",
+        minutes: "20",
         description: "Clasico churrasco italiano Chileno",
         ingredients: [
           "200 gramos de bistec de posta rosada",
@@ -15,7 +16,7 @@ export default createStore({
           "1 Pan Frica",
           "Mayonesa",
         ],
-        Steps: [
+        steps: [
           "Cortar el tomate en rebanadas de entre medio y 1 cm. Aliñar con sal por ambos lados.",
           "Moler las paltas y agregar sal. Revolver y probar.",
           "Tostar ligeramente el pan cortado por la mitad.",
@@ -32,6 +33,14 @@ export default createStore({
     ADD_RECIPE(state, recipe) {
       state.allRecipes.push(recipe);
       console.log("ADDING NEW RECIPE");
+    },
+    MAKE_SHOP_LIST(state, recipes){
+      state.shopList = [] 
+      for(const recipe in recipes){
+        state.shopList.push(recipe.ingredients);
+        console.log("ADDING NEW INGRIDIENT");
+      }
+      console.log("MAKING NEW SHOPLIST");
     },
     UPDATE_LATEST_RECIPES(state, recipe) {
       console.log("UPDATING LATEST RECIPES");
