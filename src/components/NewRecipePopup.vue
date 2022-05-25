@@ -14,6 +14,11 @@
       </div>
 
       <div class="group">
+        <label>Minutes</label>
+        <input type="text"  v-model="newRecipe.minutes"/>
+      </div>
+
+      <div class="group">
         <label>Ingredients</label>
         <div class="ingredient" v-for="i in newRecipe.ingredientRows" :key="i">
           <input type="text" v-model="newRecipe.ingredients[i - 1]" />
@@ -47,6 +52,7 @@ export default {
       id: "",
       name: "",
       description: "",
+      minutes: "",
       ingredients: [],
       steps: [],
       ingredientRows: 1,
@@ -73,6 +79,7 @@ export default {
         id: "",
         name: "",
         description: "",
+        minutes: "",
         ingredients: [],
         steps: [],
         ingredientRows: 1,

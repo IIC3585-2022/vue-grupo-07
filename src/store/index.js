@@ -7,6 +7,10 @@ export default createStore({
       {
         id: "churrasco-italiano",
         name: "Churrasco Italiano",
+<<<<<<< Updated upstream
+=======
+        minutes: "20",
+>>>>>>> Stashed changes
         description: "Clasico churrasco italiano Chileno",
         ingredients: [
           "200 gramos de bistec de posta rosada",
@@ -26,12 +30,21 @@ export default createStore({
         ],
       },
     ],
+    shopList: [],
   },
 
   mutations: {
     ADD_RECIPE(state, recipe) {
       state.allRecipes.push(recipe);
       console.log("ADDING NEW RECIPE");
+    },
+    MAKE_SHOP_LIST(state, recipes){
+      state.shopList = [] 
+      for(const recipe in recipes){
+        state.shopList.push(recipe.ingredients);
+        console.log("ADDING NEW INGRIDIENT");
+      }
+      console.log("MAKING NEW SHOPLIST");
     },
     UPDATE_LATEST_RECIPES(state, recipe) {
       console.log("UPDATING LATEST RECIPES");
