@@ -12,13 +12,8 @@
         v-for="recipe in $store.state.latestRecipes"
         :key="recipe.id"
       >
-<<<<<<< Updated upstream
-        <h2 class="card-header">{{ recipe.name }}</h2>
-        <p>{{ recipe.description }}</p>
-=======
         <h2>{{ recipe.name }}</h2>
         <p> <i>{{recipe.minutes}} min</i> <br> {{ recipe.description }}</p>
->>>>>>> Stashed changes
         <router-link :to="`/recipe/latest/${recipe.id}`">
           <button>View Recipe</button>
         </router-link>

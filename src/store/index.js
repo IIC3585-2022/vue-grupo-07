@@ -7,10 +7,7 @@ export default createStore({
       {
         id: "churrasco-italiano",
         name: "Churrasco Italiano",
-<<<<<<< Updated upstream
-=======
         minutes: "20",
->>>>>>> Stashed changes
         description: "Clasico churrasco italiano Chileno",
         ingredients: [
           "200 gramos de bistec de posta rosada",
@@ -30,7 +27,6 @@ export default createStore({
         ],
       },
     ],
-    shopList: [],
   },
 
   mutations: {
