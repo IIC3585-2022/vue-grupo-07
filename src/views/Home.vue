@@ -12,7 +12,7 @@
         v-for="recipe in $store.state.latestRecipes"
         :key="recipe.id"
       >
-        <h2>{{ recipe.name }}</h2>
+        <h2 class="card-header">{{ recipe.name }}</h2>
         <p>{{ recipe.description }}</p>
         <router-link :to="`/recipe/latest/${recipe.id}`">
           <button>View Recipe</button>
@@ -21,6 +21,7 @@
       </div>
     </div>
     <h3>Saved Recipes</h3>
+    
     <div class="recipes">
       <div
         class="card"
@@ -116,7 +117,7 @@ export default {
     },
     save_latest(recipe) {
       this.$store.commit("SAVE_LATEST", recipe);
-    }
+    },
   },
   components: { IncomingRecipePopup, NewRecipePopup },
 };
