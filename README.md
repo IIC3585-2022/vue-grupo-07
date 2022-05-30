@@ -15,7 +15,7 @@ npm install
 
 Finalmente para correr
 ```
-npn run serve
+npm run serve
 ```
 
 abrir http://localhost:8080/ en un navegador
